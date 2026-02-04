@@ -1,0 +1,64 @@
+:root {
+    --background-primary: #1a3441;
+    --background-secondary: #3f616f;
+    --foreground-primary: #edefc6;
+    --foreground-secondary: #e3ab77;
+    --foreground-tertiary: #ad8a6e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background-primary);
+    color: var(--foreground-primary);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+main p {
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--foreground-tertiary);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+footer a {
+    color: var(--foreground-secondary);
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--foreground-primary);
+}

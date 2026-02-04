@@ -1,9 +1,20 @@
 :root {
-    --background-primary: #1a3441;
-    --background-secondary: #3f616f;
-    --foreground-primary: #edefc6;
-    --foreground-secondary: #e3ab77;
-    --foreground-tertiary: #ad8a6e;
+    /* Deep Atlantic */
+    --sea-deep: #1a2633;
+    --sea-mid: #2d3d4a;
+    --sea-foam: #4a5d6a;
+
+    /* Shore */
+    --sand: #d4c8b8;
+    --driftwood: #a89888;
+    --rope: #c4a882;
+
+    /* Aliases for existing usage */
+    --background-primary: var(--sea-deep);
+    --background-secondary: var(--sea-mid);
+    --foreground-primary: var(--sand);
+    --foreground-secondary: var(--rope);
+    --foreground-tertiary: var(--driftwood);
 }
 
 * {
@@ -23,6 +34,59 @@ body {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+body::before {
+    background: linear-gradient(
+        -15deg,
+        transparent 25%,
+        var(--sea-mid) 45%,
+        var(--sea-foam) 55%,
+        transparent 75%
+    );
+    background-size: 300% 300%;
+    animation: wave-slow 25s ease-in-out infinite;
+    opacity: 0.5;
+}
+
+body::after {
+    background: linear-gradient(
+        10deg,
+        transparent 35%,
+        var(--sea-foam) 50%,
+        transparent 65%
+    );
+    background-size: 400% 400%;
+    animation: wave-fast 18s ease-in-out infinite;
+    opacity: 0.3;
+}
+
+@keyframes wave-slow {
+    0%, 100% {
+        background-position: 0% 100%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes wave-fast {
+    0%, 100% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
 }
 
 main {

@@ -186,6 +186,7 @@
         const immediate = 100;
         const shortPause = 250;
         const longPause = 1200;
+        const purposefulTypeSpeed = 250;
 
         // First mistake
         type('Web devl');
@@ -196,10 +197,10 @@
         pause(shortPause);
 
         // Second mistake
-        type('Web devl');
+        type('Web deve');
         type('Web deveo', 140 + Math.random() * 40);
         pause(immediate);
-        del('Web devl');
+        del('Web deve');
         del('Web dev');
         pause(shortPause);
 
@@ -212,7 +213,7 @@
         pause(longPause);
 
         // Get it right this time
-        for (let i = typoAt; i < final.length; i++) type(final.substring(0, i + 1));
+        for (let i = typoAt; i < final.length; i++) type(final.substring(0, i + 1), purposefulTypeSpeed);
 
         let i = 0;
         el.textContent = '';

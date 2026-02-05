@@ -42,51 +42,85 @@ body::before,
 body::after {
     content: '';
     position: fixed;
-    inset: 0;
+    inset: -40px;
     pointer-events: none;
+    transform: translate(
+        calc(var(--mouse-x, 0) * 20px),
+        calc(var(--mouse-y, 0) * 20px)
+    );
+    will-change: transform;
 }
 
 body::before {
     background: linear-gradient(
         -15deg,
-        transparent 25%,
+        transparent 15%,
         var(--sea-mid) 45%,
         var(--sea-foam) 55%,
-        transparent 75%
+        transparent 85%
     );
     background-size: 300% 300%;
-    animation: wave-slow 25s ease-in-out infinite;
-    opacity: 0.5;
+    animation: wave-slow 25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 body::after {
     background: linear-gradient(
         10deg,
-        transparent 35%,
+        transparent 15%,
         var(--sea-foam) 50%,
-        transparent 65%
+        transparent 85%
     );
     background-size: 400% 400%;
-    animation: wave-fast 18s ease-in-out infinite;
-    opacity: 0.3;
+    animation: wave-fast 18s cubic-bezier(0.6, 0, 0.4, 1) infinite;
 }
 
 @keyframes wave-slow {
-    0%, 100% {
+    0% {
         background-position: 0% 100%;
+        opacity: 0.2;
+    }
+    30% {
+        opacity: 0.4;
     }
     50% {
         background-position: 100% 0%;
+        opacity: 0.3;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    100% {
+        background-position: 0% 100%;
+        opacity: 0.2;
     }
 }
 
 @keyframes wave-fast {
-    0%, 100% {
+    0% {
         background-position: 100% 100%;
+        opacity: 0.1;
+    }
+    35% {
+        opacity: 0.25;
     }
     50% {
         background-position: 0% 0%;
+        opacity: 0.15;
     }
+    75% {
+        opacity: 0.2;
+    }
+    100% {
+        background-position: 100% 100%;
+        opacity: 0.1;
+    }
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
 main {
@@ -97,6 +131,8 @@ main {
     align-items: center;
     text-align: center;
     padding: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -111,11 +147,37 @@ main p {
     color: var(--foreground-tertiary);
 }
 
+.tagline::after {
+    content: '|';
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
 footer {
     display: flex;
     justify-content: center;
     gap: 2rem;
     padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+        animation: none;
+        opacity: 0.3;
+        transform: none;
+    }
+
+    .tagline::after {
+        animation: none;
+        opacity: 1;
+    }
 }
 
 footer a {

@@ -4,8 +4,8 @@
     "description": "Grant Cox's personal website",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#1a3441",
-    "theme_color": "#1a3441",
+    "background_color": "#1a2633",
+    "theme_color": "#1a2633",
     "icons": [
         {
             "src": "/assets/web-app-manifest-192x192.png",

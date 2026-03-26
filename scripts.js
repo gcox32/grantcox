@@ -4,10 +4,10 @@
     // ── Time-aware color temperature ──────────────────────────────
     function initTimeAwareColors() {
         const periods = {
-            dawn:      { deep: [28, 30, 16], mid: [20, 25, 25], foam: [15, 20, 37] },
+            dawn:      { deep: [195, 30, 14], mid: [192, 25, 22], foam: [188, 20, 34] },
             morning:   { deep: [210, 30, 15], mid: [205, 25, 23], foam: [200, 18, 35] },
             afternoon: { deep: [210, 30, 15], mid: [205, 25, 23], foam: [200, 18, 35] },
-            dusk:      { deep: [25, 28, 16], mid: [22, 22, 25], foam: [18, 18, 37] },
+            dusk:      { deep: [225, 30, 14], mid: [220, 24, 22], foam: [215, 20, 34] },
             night:     { deep: [215, 35, 14], mid: [210, 28, 22], foam: [205, 22, 33] }
         };
 
@@ -24,7 +24,7 @@
             const colors = periods[period];
             const root = document.documentElement;
             root.style.setProperty('--sea-deep', `hsl(${colors.deep[0]} ${colors.deep[1]}% ${colors.deep[2]}%)`);
-            root.style.setProperty('--sea-mid', `hsl(${colors.mid[0]} ${colors.mid[1]}% ${colors.mid[2]}%)`);
+            root.style.setProperty('--sea-mid',  `hsl(${colors.mid[0]}  ${colors.mid[1]}%  ${colors.mid[2]}%)`);
             root.style.setProperty('--sea-foam', `hsl(${colors.foam[0]} ${colors.foam[1]}% ${colors.foam[2]}%)`);
         }
 

@@ -180,7 +180,7 @@
         function del(text)  { steps.push({ text, delay: typeDelay }); }
         function pause(ms)  { steps.push({ text: steps[steps.length - 1].text, delay: ms }); }
 
-        // Type correctly: "W" → "Web dev"
+        // Type correctly: "W" -> "Web dev"
         for (let i = 1; i <= typoAt; i++) type(final.substring(0, i));
 
         const immediate = 100;
@@ -204,7 +204,7 @@
         del('Web dev');
         pause(shortPause);
 
-        // Third mistake — longer pause after this one
+        // Third mistake: longer pause after this one
         type('Web devl');
         type('Web devlo');
         pause(longPause);
@@ -215,12 +215,19 @@
         // Get it right this time
         for (let i = typoAt; i < final.length; i++) type(final.substring(0, i + 1), purposefulTypeSpeed);
 
+        const clack = new Audio('assets/key-clack.mp3');
+
         let i = 0;
         el.textContent = '';
 
         function tick() {
             if (i >= steps.length) return;
-            el.textContent = steps[i].text;
+            const newText = steps[i].text;
+            if (newText !== el.textContent) {
+                clack.currentTime = 0;
+                clack.play().catch((err) => {console.log(err)});
+            }
+            el.textContent = newText;
             const delay = steps[i].delay;
             i++;
             setTimeout(tick, delay);

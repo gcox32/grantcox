@@ -215,7 +215,7 @@
         // Get it right this time
         for (let i = typoAt; i < final.length; i++) type(final.substring(0, i + 1), purposefulTypeSpeed);
 
-        const clack = new Audio('assets/key-clack.mp3');
+        const clack = new Audio('public/key-clack.mp3');
 
         let i = 0;
         el.textContent = '';
